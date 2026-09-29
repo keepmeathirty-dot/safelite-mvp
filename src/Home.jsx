@@ -264,7 +264,7 @@ export default function Home({ phone, onLogout }) {
         <div className="panel map-panel">
           <MapContainer
             center={position || DEFAULT_CENTER}
-            zoom={14}
+            zoom={10}
             style={{ height: '440px', width: '100%', borderRadius: '12px' }}
           >
             <TileLayer
@@ -281,8 +281,8 @@ export default function Home({ phone, onLogout }) {
                 key={a.id}
                 center={[a.lat, a.lng]}
                 radius={
-                  a.severity === 'high' ? 180 : a.severity === 'medium' ? 120 : 80
-                }
+  a.severity === 'high' ? 5000 : a.severity === 'medium' ? 3000 : 1500
+}
                 pathOptions={{
                   color:
                     a.severity === 'high'
