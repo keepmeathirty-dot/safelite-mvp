@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { MapContainer, TileLayer, Circle, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
+import 'leaflet.heat'
 import AlertsFeed from './AlertsFeed.jsx'
 import ReportIncident from './ReportIncident.jsx'
 import Premium from './Premium.jsx'
@@ -276,38 +277,7 @@ export default function Home({ phone, onLogout }) {
                 <Popup>You are here</Popup>
               </Marker>
             )}
-            {alerts.map((a) => (
-              <Circle
-                key={a.id}
-                center={[a.lat, a.lng]}
-                radius={
-  a.severity === 'high' ? 5000 : a.severity === 'medium' ? 3000 : 1500
-}
-                pathOptions={{
-                  color:
-                    a.severity === 'high'
-                      ? '#dc2626'
-                      : a.severity === 'medium'
-                      ? '#f59e0b'
-                      : '#3b82f6',
-                  fillColor:
-                    a.severity === 'high'
-                      ? '#dc2626'
-                      : a.severity === 'medium'
-                      ? '#f59e0b'
-                      : '#3b82f6',
-                  fillOpacity: a.isMine ? 0.55 : 0.35,
-                }}
-              >
-                <Popup>
-                  <strong>{a.type}</strong>
-                  <br />
-                  {a.note}
-                  <br />
-                  <em>{a.locationText}</em>
-                </Popup>
-              </Circle>
-            ))}
+      <HeatmapLayer alerts={alerts} />
           </MapContainer>
           <div className="legend">
             <span><span className="dot high" /> High risk</span>
@@ -359,4 +329,33 @@ export default function Home({ phone, onLogout }) {
       )}
     </div>
   )
+}
+function HeatmapLayer({ alerts }) {
+  const map = useMap()
+
+  useEffect(() => {
+    const points = alerts.map((a) => {
+      const intensity =
+        a.severity === 'high' ? 1.0 : a.severity === 'medium' ? 0.6 : 0.3
+      return [a.lat, a.lng, intensity]
+    })
+
+    const layer = L.heatLayer(points, {
+      radius: 50,
+      blur: 40,
+      maxZoom: 12,
+      minOpacity: 0.35,
+      gradient: {
+        0.0: '#3b82f6',
+        0.4: '#f59e0b',
+        0.7: '#dc2626',
+        1.0: '#7f1d1d',
+      },
+    })
+
+    layer.addTo(map)
+    return () => map.removeLayer(layer)
+  }, [alerts, map])
+
+  return null
 }
