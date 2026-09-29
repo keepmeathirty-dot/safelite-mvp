@@ -33,6 +33,21 @@ export default function Login({ onLogin }) {
           <button type="submit">Continue</button>
         </form>
 
+        <div className="login-pricing">
+          <div className="tier">
+            <strong>Free</strong>
+            <span className="muted small">Basic SOS &amp; alerts</span>
+          </div>
+          <div className="tier">
+            <strong>R30/mo</strong>
+            <span className="muted small">Premium — family tracking</span>
+          </div>
+          <div className="tier">
+            <strong>R200/mo</strong>
+            <span className="muted small">Business — priority alerts</span>
+          </div>
+        </div>
+
         <p className="disclaimer">
           By continuing you agree to share your location with your emergency
           contacts when you press SOS.
