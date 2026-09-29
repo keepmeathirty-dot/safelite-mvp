@@ -16,10 +16,22 @@ L.Icon.Default.mergeOptions({
 const DEFAULT_CENTER = [-26.2041, 28.0473]
 
 const SEED_ALERTS = [
-  { id: 'seed-1', lat: -26.2041, lng: 28.0473, type: 'Robbery', note: 'Street robbery reported near taxi rank', severity: 'high', locationText: 'Bree Street taxi rank', timestamp: Date.now() - 20 * 60 * 1000 },
-  { id: 'seed-2', lat: -26.1950, lng: 28.0550, type: 'Suspicious activity', note: 'Group loitering near ATM', severity: 'medium', locationText: 'Rosebank Mall ATM', timestamp: Date.now() - 60 * 60 * 1000 },
-  { id: 'seed-3', lat: -26.2150, lng: 28.0380, type: 'Burglary', note: 'House break-in on 3rd Ave', severity: 'high', locationText: '3rd Avenue, Melville', timestamp: Date.now() - 3 * 60 * 60 * 1000 },
-  { id: 'seed-4', lat: -26.2080, lng: 28.0620, type: 'Theft', note: 'Phone snatched at bus stop', severity: 'medium', locationText: 'Oxford Road bus stop', timestamp: Date.now() - 5 * 60 * 60 * 1000 },
+  // HIGH RISK
+  { id: 'seed-1', lat: -29.6800, lng: 30.9200, type: 'Contact Crime Hotspot', note: 'Highest contact crime rate nationally', severity: 'high', locationText: 'Inanda', timestamp: Date.now() - 20 * 60 * 1000 },
+  { id: 'seed-2', lat: -29.9600, lng: 30.8800, type: 'Violent Crime Hotspot', note: 'High murder and rape stats', severity: 'high', locationText: 'Umlazi', timestamp: Date.now() - 60 * 60 * 1000 },
+  { id: 'seed-3', lat: -29.8587, lng: 31.0218, type: 'CBD Crime', note: '~20 serious incidents per day', severity: 'high', locationText: 'Durban Central', timestamp: Date.now() - 3 * 60 * 60 * 1000 },
+  { id: 'seed-4', lat: -29.6167, lng: 30.3833, type: 'High Rape Stats', note: '#2 in KZN for rape cases', severity: 'high', locationText: 'Plessislaer, PMB', timestamp: Date.now() - 5 * 60 * 60 * 1000 },
+  
+  // MEDIUM RISK
+  { id: 'seed-5', lat: -29.9167, lng: 30.8833, type: 'Rising Contact Crime', note: '21% increase recently', severity: 'medium', locationText: 'Chatsworth', timestamp: Date.now() - 6 * 60 * 60 * 1000 },
+  { id: 'seed-6', lat: -29.7000, lng: 31.0000, type: 'Property Crime', note: 'Frequent residential burglaries', severity: 'medium', locationText: 'Phoenix', timestamp: Date.now() - 8 * 60 * 60 * 1000 },
+  { id: 'seed-7', lat: -29.6500, lng: 31.0500, type: 'Residential Robbery', note: 'Known burglary hotspot', severity: 'medium', locationText: 'Verulam', timestamp: Date.now() - 10 * 60 * 60 * 1000 },
+  { id: 'seed-8', lat: -29.8500, lng: 30.9800, type: 'Armed Robbery', note: 'Recent hijackings reported', severity: 'medium', locationText: 'Berea/Mayville', timestamp: Date.now() - 12 * 60 * 60 * 1000 },
+
+  // LOW RISK
+  { id: 'seed-9', lat: -29.7270, lng: 31.0830, type: 'Low Risk', note: 'Heavy private security presence', severity: 'low', locationText: 'Umhlanga', timestamp: Date.now() - 1 * 24 * 60 * 60 * 1000 },
+  { id: 'seed-10', lat: -29.8300, lng: 30.8800, type: 'Low Risk', note: 'Controlled access estate', severity: 'low', locationText: 'Cowies Hill', timestamp: Date.now() - 2 * 24 * 60 * 60 * 1000 },
+  { id: 'seed-11', lat: -29.8700, lng: 30.9300, type: 'Low Risk', note: 'Among safest eThekwini precincts', severity: 'low', locationText: 'Malvern', timestamp: Date.now() - 3 * 24 * 60 * 60 * 1000 },
 ]
 
 const CONTACTS = [
